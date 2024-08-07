@@ -1,0 +1,252 @@
+@import "./mixin"; 
+@import "./admin/dashboard";
+@import "./admin/pages"; 
+@import "./admin/charts"; 
+@import "./admin/mediaquery"; 
+
+@import "./user/admin";
+@import "./user/mediaquery"; 
+@import "./user/dashboard"; 
+@import "./user/product";
+@import "./user/cart";
+@import "./user/checkout";
+@import "./user/shop"; 
+
+:root{
+    font-family: Inter, system-ui, Avenier, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+}
+body{
+    user-select: none;
+}
+*{
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: black; 
+}
+
+.not-found{
+    @include flex(column); 
+    height: 86vh; 
+    @include inputPosition(4rem 1rem); 
+    > h1{
+        padding: 3rem; 
+    }
+    > svg {
+        font-size: 5rem;
+    }
+}
+.red{
+    color: red; 
+}
+.purple{
+    color: rgb(47, 0, 255); 
+}
+.green{
+    color: rgb(0, 195, 0); 
+}
+
+// admin dashboard
+.adminContainer{
+    @include grid(1fr 6fr, 0.8rem);
+    height: 100vh; 
+    background-color: rgb(247, 247, 247);
+
+    > aside{
+        width: 100%;
+        background-color: white;
+        padding: 1rem; 
+        z-index: 10;
+        overflow-y: auto;
+        &::-webkit-scrollbar{
+            display: none; 
+        }
+    }
+}
+
+.adminContainer > aside > div {
+    margin: 0.25rem; 
+    > h5{
+        @include heading(2px); 
+        opacity: 0.8;
+        margin: 1.5rem 0 1rem; 
+        font-size: 1.1rem; 
+    }
+
+    > ul {
+        @include flex(column, unset, unset, 0.5rem);
+        list-style: none;
+
+        > li {  
+            padding: 0.5rem; 
+            border-radius: 2px;
+
+            a{
+                color: rgba(0, 0, 0, 0.825);
+                @include flex(row, left, left, 0.2rem);
+                font-size: 0.85rem;
+                
+                .icon {
+                    padding-top: .1rem;
+                }
+                span {
+                    margin: 0rem 0.2rem; 
+                }
+            }
+        }
+    }
+}
+
+// Table 
+.table {
+    border-collapse: collapse;
+    width: 100%; 
+    
+    th, td { 
+        padding: 8px; 
+        text-align: center;
+        text-align: left;
+        vertical-align: middle;
+    }
+    td:first-child, th:first-child{
+        padding-left: 3rem; 
+    }
+    td:last-child, th:last-child{
+        padding-right: 3rem; 
+    }
+    th {
+        font-weight: bold;
+        color: #0000009e; 
+        font-size: 1.1rem;
+        padding: 2rem 1rem 1rem 1rem; 
+    }
+    tbody {
+        tr {
+            box-shadow: 0px 1px 1px rgba(0,0,0,0.093);
+        }
+
+        td {
+            padding: 1rem;
+
+            img {
+                width: 4rem; 
+                height: 4rem; 
+                object-fit: contain;
+                border-radius: 10px;
+            }
+
+            a {
+                padding: 0.8rem 1.2rem; 
+                border-radius: 10px;
+            }
+
+            button {
+                @include buttonColor(transparent, unset, unset, 0.6); 
+                @include buttonPosition(0.5rem 1rem, 0rem 0rem); 
+                @include buttonSize(10px, 2rem);
+            }
+        }
+
+        &:first-child {
+            border-left: none; 
+        }
+        &:last-child {
+            border-right: none; 
+        }
+    }
+
+}
+
+.tablePagination {
+    @include flex(row, center, center, 5rem); 
+    margin: 2rem; 
+
+    > button {
+        @include buttonColor(rgba(0, 115, 255, 0.25), 0px 1px 1px rgba(0,0,0,0.093)); 
+        @include buttonPosition(0.5rem 1rem, 0rem 0rem); 
+        @include buttonSize;
+
+        &:disabled{
+            background-color: rgba(0, 115, 255, 0.1);
+            cursor: not-allowed;
+        }
+    }
+}
+
+// Admin Sidebar Hamburger 
+#hamburger {
+    display: grid;
+    place-items: center;
+    @include square(3rem);
+    border: none; 
+    outline: none; 
+    cursor: pointer; 
+    color: rgba(44, 104, 255);
+    background-color: white;
+    font-size: 1.2rem; 
+    position: fixed;
+    top: 1rem; left: 1rem; 
+    border-radius: 50%;
+    z-index: 10;
+}
+#closeHamSideBar {
+    display: block; 
+    @include buttonColor(unset,1px 1px 20px 6px rgba(0,0,0,0.1)); 
+    @include buttonPosition(1rem, 3rem auto); 
+    @include buttonSize(10px, 50%);
+}
+
+// Loader 
+.loader {
+    width: 100%; 
+    height: 100vh; 
+    @include flex; 
+    > div{
+        @include square(2.5rem);
+        border-radius: 50%;
+        border-top: 0.2rem solid rgb(43,43,43);
+        border-left: 0.2rem solid rgb(43,43,43);
+        border-right: 0.2rem solid #fff; 
+        border-bottom: 0.2rem solid #fff; 
+        animation: loadingAnimation 0.5s linear infinite; 
+    }
+}
+@keyframes loadingAnimation{
+    to{
+        transform: rotateZ(360deg);
+    }
+}
+
+@keyframes upDown{
+    to{
+        transform: translate(-50%, -20%);
+    }
+}
+.skeleton-loader{
+    @include flex(column); 
+    .skeleton-shape{
+        height: 30px; 
+        width: 100%; 
+        background-color: #ddd;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        animation: skeleton-loading 1.5s infinite;
+    }
+}
+@keyframes skeletonLoading {
+    0%{
+        opacity: 0.5;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0.5;
+    }
+}

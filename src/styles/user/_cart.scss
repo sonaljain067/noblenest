@@ -1,0 +1,95 @@
+.cart{
+    overflow-y: auto; 
+    h1{
+        padding: 3rem 0 1rem 4rem; 
+    }
+    .cartTable {
+        max-height: 40rem; 
+        .cartItem{
+            @include flex(row, space-evenly, center, 2rem);
+            @include inputPosition(1rem, 2rem);  
+            @include boxStyle(10px, unset, 1px solid $grayBorder); 
+            > img {
+                width: 5rem; height: 5rem; 
+                border-radius: 50%; 
+            }
+            button {
+                background-color: transparent;
+            }
+            .cartIncDec{
+                @include flex(row, space-evenly, center, 2rem);
+                > button {
+                    font-size: 1.5rem;
+                }
+            }
+            .cartDel{
+                padding-left: 1rem; 
+            }
+        }
+    }
+    .cartActions{
+        @include flex(row, space-between, center, 2rem); 
+        @include inputPosition(2rem); 
+        
+        .couponCode{
+            > input{
+                width: 14rem; 
+                @include inputPosition(0.75rem, 0); 
+                @include boxStyle(10px, unset, 1px solid $grayBorder); 
+            }
+            p {
+                padding: 0.25rem; 
+            }
+            > button {
+                @include inputPosition(0.75rem 1rem, 0 0 0 1rem); 
+                @include boxStyle(10px, unset); 
+                @include inputColor($blue, $white); 
+            }
+        }
+        .actions{
+            @include flex(row, space-around, center, 2rem); 
+            a > button {
+                @include inputPosition(0.75rem 2rem, 0 0 0 1rem); 
+                border-radius: 10px;
+            }
+            
+            .updateCart, .continueShop{
+                @include inputColor($blue, $white); 
+            }
+        }
+    }
+    .cartTotalSection{
+        max-width: 25rem; 
+        @include inputPosition(2rem, 1rem 2rem 3rem auto);
+        @include boxStyle(10px, unset, 1px solid $grayBorder); 
+        .cartTotal{
+            @include flex(row, space-evenly, flex-end, 6rem); 
+            .priceValue > p{
+                font-weight: 700;
+                text-align: right;
+            }
+        }
+        .checkout{
+            width: 100%; 
+            background-color: $yellow; 
+            @include boxStyle(10px); 
+            @include inputPosition(1.2rem, 1rem 0 0, center); 
+        }
+    }
+    
+}
+
+.orderContainer{
+    @include flex(column, flex-start);
+    height: 38rem; 
+    h1 {
+        margin: 2rem; 
+    }
+    .dashboardOrderBox {
+        width: 60rem; 
+        overflow: auto; 
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}

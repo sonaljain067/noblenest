@@ -1,0 +1,33 @@
+@media screen and (width <= 1200px) {
+    .adminContainer {
+        overflow: auto;
+    }
+    .dashboard {
+        .widgetContainer, .graphContainer, .transactionContainer  {
+            justify-content: center;
+            flex-wrap: wrap; 
+        }
+        .graphContainer, .transactionContainer{
+            padding: 0.5rem;
+        }
+    }
+}
+
+@media screen and (width <= 1100px) {
+    .adminContainer {
+        grid-template-columns: 1fr !important;
+    } 
+
+} 
+
+@media screen and (width <= 760px) {
+    .manageProduct {
+        flex-direction: column;
+        align-items: center;
+        padding: 0; 
+        > section, >article {
+            max-width: 400px;
+            height: auto; 
+        }
+    } 
+} 

@@ -1,0 +1,76 @@
+.shop {
+    padding: 2rem; 
+    .shopContainer{
+        @include grid(1.25fr 5fr, 1rem); 
+        .shopProductsWithPriceAndCategoriesFilter{
+            overflow-y: auto;
+            width: 100%; 
+            .productCategories, .productFilterByPrice, .popularProducts, .productSort, .sortOption{
+                border: 1px solid $grayBorder; 
+                border-radius: 10px;
+                padding: 0.5rem; 
+                margin: 1rem 0 2rem; 
+                > h3 {
+                    padding: 0 0.25rem; 
+                }
+            }
+            .productCategories{
+                .productCategory{
+                    padding: 0.5rem 0.25rem;
+                    > svg {
+                        padding: 0 0.25rem; 
+                    } 
+                }
+            }
+            .productFilterByPrice{
+                display: grid; padding: 1rem; 
+                .filterBtn {
+                    justify-self: flex-end;
+                    border-radius: 10px;
+                    @include inputPosition(1rem 1.5rem, 1rem 0); 
+                    @include inputColor($blue, white); 
+                }
+            }
+            .productSort, .sortOption{ 
+                padding: 0.5rem; 
+                > select {
+                    border: none; 
+                    outline: none; 
+                }
+            }
+
+            .popularProducts {
+                // add here 
+                border: 1px solid $grayBorder; 
+                border-radius: 10px;
+                padding: 0.5rem; 
+                margin: 1rem 0 2rem; 
+                
+                .popularProduct{
+                    > img {
+                        width: 4rem; 
+                    }
+                    margin: 1rem 0; 
+                    @include flex(row); 
+                    .popularProductInfo {
+                        @include flex(column, flex-start, flex-start, 1rem); 
+                        > p{
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+        .shopCategoryProducts {
+            padding-left: 1rem; 
+            .products{
+                padding: 2rem 0;  
+                @include flex(row, space-between, unset, 0); 
+                flex-wrap: wrap;
+                .product{
+                    width: 18rem; margin: 0 0 1.5rem; 
+                }
+            }
+        }
+    }
+}

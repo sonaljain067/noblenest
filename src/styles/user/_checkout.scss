@@ -1,0 +1,142 @@
+.deliveryInfo {
+    h1 {
+        margin: 1rem 0; 
+    }
+    @include inputPosition(2rem 4rem); 
+    #shippingBackButton {
+        background-color: transparent; 
+        > svg {
+            font-size: 1.5rem; 
+            margin-left: -2rem; 
+        }
+    }
+    > form{
+        @include inputPosition(1.5rem 0, 0); 
+        .street, .cityState, .pinCountry, .notes { 
+            @include inputPosition(0.5rem 0, 1rem 0); 
+            input, textarea, select{
+                @include boxStyle(5px, unset, 1px solid $grayBorder); 
+                @include inputPosition(1rem, 0.1rem 0);  
+                width: 100%; outline: none; 
+            }
+        }
+        .cityState, .pinCountry{
+            @include grid(2fr 2fr, 1fr); 
+            .state, .country {
+                margin-left: 1rem; 
+            }
+        }
+        #payBtn {
+            @include flex(column, center); 
+            #payNow {
+                @include inputColor($blue, white); 
+                @include inputPosition(1.5rem 3rem, 0); 
+                @include boxStyle; 
+            }
+        }
+    }
+    .savedAddresses{
+        @include inputPosition(1rem 0); 
+        .addressTile{
+            border: 1px solid $grayBorder; border-radius: 10px;
+            @include inputPosition(1rem, 0.25rem 0); 
+            input {
+                margin-right: 1rem; 
+            }
+        }
+    }
+    
+    
+}
+.checkout{
+    margin: 2rem;  
+    .checkoutDetails{
+        @include grid(2.25fr 2fr, 2rem); 
+        .orderInfo, .deliveryInfo{
+            @include inputPosition(1.5rem, 0); 
+        }
+        .orderInfo {
+            max-height: 50rem; 
+            overflow-y: auto; 
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            .order{
+                
+                @include flex(row, space-between, center); 
+                @include inputPosition(1.75rem 0); 
+                border-bottom: 2px solid $grayBorder; 
+                
+                .productDetInfo{
+                    @include flex(row); 
+                    >img{
+                        @include inputSize(8rem, 8rem); 
+                        object-fit: cover
+                    }
+                    .productInfo{
+                        >h4, >p { margin: 0; }
+                        @include flex(column, space-between, flex-start, 1.5rem); 
+                    }
+                }
+                .orderPrice{
+                    font-weight: 700;
+                }
+            }
+            .priceSplit{
+                @include flex(row, space-between); 
+                .priceValue{
+                    text-align: right;
+                }
+                .priceHeading > p, .priceValue > p{
+                    padding: 0.5rem 0;
+                }
+                border-bottom: 2px solid $grayBorder; 
+            }
+            .totalPrice{
+                @include flex(row, space-between); 
+                :last-child{
+                    @include inputLook(1.1rem, unset, unset, 700);
+                }
+            }
+        }
+    }
+    .payment{
+        max-width: 30rem; 
+        @include inputPosition(1rem, 3rem 0); 
+        @include boxStyle(8px, unset, 1px solid $grayBorder); 
+        .heading >p{
+            font-weight: 200;
+        }
+        .paymentOption{
+            margin: 1rem 0;
+            border-bottom: 1px solid $grayBorder;
+            > input{
+                margin: 1.5rem 1rem;
+            }
+        }
+        > input[type="text"], >input[type="number"]{
+            @include boxStyle(10px, unset, 1px solid $grayBorder); 
+            @include inputPosition(0.75rem, 0.5rem 0);  
+            width: 95%; 
+        }
+        .cardDetail{
+            @include flex(row); 
+            >input{
+                @include boxStyle(10px, unset, 1px solid $grayBorder); 
+                @include inputPosition(0.75rem, 0.5rem 0); 
+                width: 50%; 
+            }
+        }
+        .placeOrder{
+            margin: 1rem 0;
+            @include flex(column, flex-start, flex-start, 1rem); 
+            > button{
+                width: 100%; @include boxStyle(10px);
+                @include inputPosition(1rem, 0, center); 
+                @include inputColor($blue, $white); 
+                
+                
+            }
+        }
+    }
+}

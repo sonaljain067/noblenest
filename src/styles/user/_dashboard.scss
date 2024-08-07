@@ -1,0 +1,247 @@
+.userDashboardDiv{
+    .dashboardOverlayImageSection{
+        position: relative;
+        > img {
+            @include inputImg(cover, 85vh, 100%, no-repeat, 15); 
+        }
+
+        > article {
+            @include positionAbsolute(none, 0, 50%); 
+            @include inputPosition(1rem, 0, right); 
+            @include inputColor(none, $blue);
+
+            > h1 {
+                @include inputLook(4rem, 3px); 
+                @include inputPosition(0 0 0.1rem, 1rem 0); 
+            }
+
+            > p {
+                @include inputLook(1.5rem, 1.5px); 
+                @include inputPosition(0 0 1rem, 1rem 0);
+            }
+
+            > a {
+                @include inputPosition; 
+                @include inputSize(2rem);
+                @include inputColor($blue, white); 
+            }
+        }
+    }
+    .dashboardProductCategoriesSection, .dashboardTopFeaturedBestSellerSection, .dashboardCustomerTestimonialSection{
+        
+        > h1 {
+            @include inputLook(3rem, 3px); 
+            @include inputPosition(1.85rem 0 0.5rem, 1rem, center); 
+        }
+
+        > p{
+            @include flex(row, center, center);
+            @include inputPosition(1rem 0 0.5rem, 1rem); 
+        }
+
+    }   
+    .dashboardProductCategoriesSection{
+        > h1 {
+            padding-top: 4rem; 
+        }
+        .productCategories {
+            @include flex(row, space-evenly, center, 4rem);   
+            @include inputPosition(4rem); 
+            overflow-x: auto; overflow-y: none;
+            &::-webkit-scrollbar{
+                display: none;
+            }
+            .productCategory{
+                .cloud  {
+                    @include inputSize(250px, 100px); 
+                    @include inputColor($lightblue); 
+                    @include boxStyle(100px,2px 2px 10px 2px rgba(0,0,0,0.2)); 
+
+                    &::after, &::before{ 
+                        content:"";
+                        position:relative;
+                        display:inline-block;
+                        background:inherit;
+                        border-radius:inherit;
+                    }
+
+                    &::before{
+                        rotate:15deg; 
+                        @include inputSize(130px, 190px); 
+                        @include positionAbsolute(-50px, none, none, 60px, relative); 
+                    }
+                    &::after {
+                        @include inputSize(100px, 100px); 
+                        @include positionAbsolute(-70px, none, none, 20px, relative); 
+                    }
+                }
+                #cloud1{ 
+                    rotate:-5deg; 
+                    &::before{
+                        rotate:10deg;
+                        @include inputSize(110px, 180px); 
+                        @include positionAbsolute(-50px, none, none, 60px, relative); 
+                    }
+                    &::after {
+                        rotate: 50deg; 
+                        @include inputSize(80px, 80px); 
+                        @include positionAbsolute(-60px, none, none, 30px, relative); 
+                    }
+                }
+                #cloud2{
+                    rotate:5deg; 
+                    &::before{
+                        rotate:35deg; 
+                        @include inputSize(100px, 180px); 
+                        @include positionAbsolute(-50px, none, none, 60px, relative); 
+                    }
+                    &::after {
+                        rotate:-15deg;
+                        @include inputSize(100px, 100px); 
+                        @include positionAbsolute(-40px, none, none, -20px, relative); 
+                    }
+                }
+                #cloud3{
+                    rotate: 15deg;
+                    &::before{
+                        rotate:30deg; 
+                        @include inputSize(120px, 200px); 
+                        @include positionAbsolute(-50px, none, none, 80px, relative); 
+                    }
+                    &::after {
+                        width:100px;
+                        height:100px;
+                        top:-150px;
+                        left:-90px;
+                        rotate:-15deg;
+                        @include inputSize(100px, 100px); 
+                        @include positionAbsolute(-150px, none, none, -90px, relative); 
+                    }
+                }
+                #cloud4{
+                    &::before{
+                        rotate:15deg; 
+                        @include inputSize(130px, 190px); 
+                        @include positionAbsolute(-50px, none, none, 60px, relative); 
+                    }
+                    &::after {
+                        @include inputSize(100px, 100px); 
+                        @include positionAbsolute(-70px, none, none, 20px, relative); 
+                    }
+                }
+                #cloud5{
+                    rotate:-10deg; 
+                    &::before{
+                        rotate:-15deg;
+                        @include inputSize(120px, 180px); 
+                        @include positionAbsolute(-50px, none, none, 80px, relative); 
+                    }
+                    &::after {
+                        @include inputSize(70px, 70px); 
+                        @include positionAbsolute(-60px, none, none, -60px, relative); 
+                    }
+                }
+                .icon{
+                    z-index: 100; 
+                    
+                    @include positionAbsolute(-4rem, none, none, 4.5rem, relative); 
+                    button {
+                        font-size: 1.35rem; 
+                        background-color: transparent; 
+                    }
+                }
+                > p{
+                    @include inputPosition(0.5rem 0, 0, center); 
+                }
+            }
+        }
+    }
+    .dashboardTopFeaturedBestSellerSection {
+       .featuredProducts, .bestSellerProducts, .newArrivalProducts{
+            padding: 2rem; 
+            overflow: none; 
+            @include flex(row, center, center, 2rem); 
+            flex-wrap: wrap;
+        }
+        .popularProducts {
+            padding: 2rem; 
+            @include flex(row, flex-start, center, 2rem);
+            overflow-x: auto;
+            &::-webkit-scrollbar{
+                display: none;
+            }
+        }
+    }
+    .dashboardPopularProductsSection {
+        .popularProducts {
+            padding: 2rem; 
+            @include flex(row, flex-start, center, 2rem);
+            overflow-x: auto;
+            &::-webkit-scrollbar{
+                display: none;
+            }
+        }
+    }
+    .dashboardCustomerTestimonialSection{
+        .testimonials{
+            @include flex(row, flex-start, center, 2rem);
+            margin: 4rem; 
+            overflow-x: auto;
+           
+            &::-webkit-scrollbar{
+                display: none;
+            }
+            
+            .testimonial{
+                flex-shrink: 0;
+                width: 24rem; 
+                padding: 2rem; 
+                // margin: 1rem; 
+                @include boxStyle(10px, none, 1px solid $grayBorder); 
+                .rating {
+                    font-size: 1.2rem; 
+                    margin: 1rem 0;
+                }
+    
+                .customerInfo {
+                    @include flex(row, flex-start);
+                    
+                    >img{
+                        @include inputImg(cover, 4rem, 4rem); 
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+        
+
+    }
+    .dashboardSiteFeaturesSection{
+        @include flex(row, center, center, 0rem);
+        margin: 3rem 0 4rem; 
+        flex-wrap: wrap; 
+        .feature{
+            @include inputSize(20rem); 
+            @include flex(column, center, center, 0);
+            flex-shrink: 0; 
+
+            @include inputPosition(2rem, 1rem); 
+            > p{
+                color: $black; 
+                margin-top: -0.5rem; 
+            }
+        }
+        .customerCare {
+            @include inputColor(#F4FaFF, #12AEE0); 
+        } 
+        .freeShip {
+            @include inputColor(#FFFAF4, #E87B16); 
+            > p{
+                color: $black; 
+            }
+        } 
+        .return {
+            @include inputColor(#F4FFF5, #06C825); 
+        } 
+    }
+}

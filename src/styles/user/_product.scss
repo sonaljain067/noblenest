@@ -1,0 +1,161 @@
+.productDetail{
+    padding: 2rem; 
+    .productDetailContainer{
+        @include grid(2fr 2fr, 1rem); 
+        .productImages{
+            .largeProductImage {
+                padding: 0 0.5rem; 
+                >img{
+                    width: 100%; 
+                    height: 41rem; 
+                    object-fit: cover;
+                    border-radius: 10px;
+                }
+            }
+            .smallProductImages {
+                @include flex(row, space-between, center, 0); 
+                >img{
+                    @include inputSize(11rem, 11rem); 
+                    object-fit: cover;
+                    @include inputPosition(0.5rem, 0); 
+                    border-radius: 14px;
+                }
+            }
+        }
+        .productDetailInfo{
+            h2, h3, p{
+                margin: 0; 
+            }
+            padding: 0 1rem; 
+            
+            .productInfo{
+                padding: 0 1rem 0 0; 
+                @include flex(column, flex-start, flex-start, 1.5rem); 
+                .ratingReviewCount{
+                    @include flex(row, flex-start, center); 
+                    .rating{
+                        font-size: 1.2rem; 
+                    }
+                }
+                .description{
+                    width: 85%;
+                }
+                .socialShare{
+                    @include flex(row, flex-start); 
+                    padding: 0rem 0;
+                    .socials{
+                        @include flex(row, flex-start); 
+                        padding: 0 0.5rem; margin: 0;
+                        font-size: 1.5rem; 
+                        color: $lightRed;
+                        > li{
+                            padding-right: 0.75rem;
+                        }
+                    }
+                }
+                .cartActions{
+                    @include flex(row, flex-start, center, 1.5rem);
+                    button{
+                        padding: 0.75rem 1rem;
+                        border-radius: 10px; 
+                        font-size: 1rem; 
+                        background-color: white;
+                        border: 1px solid $grayBorder; 
+                    }
+                    .cartItems {
+                        @include flex(row, flex-start, center, 0);
+                        button{
+                            border: 2px solid $blue; 
+                        }
+                        .item {
+                            border-radius: 0;
+                            border-right: 0; 
+                            border-left: 0;
+                            cursor: grab;
+                        }
+                        button:first-child{
+                            border-bottom-right-radius: 0px;
+                            border-top-right-radius: 0px;
+                        }
+                        button:last-child{
+                            border-bottom-left-radius: 0px;
+                            border-top-left-radius: 0px;
+                        }
+                    }
+                    .addToCart{
+                        background-color: $blue; 
+                        color: white; 
+                        border: none; 
+                    }
+                }
+            }
+            .productInformation{
+                margin: 2rem 0; 
+                padding: 1rem; border-radius: 10px;
+                border: 1px solid $gray; 
+                > h3 {
+                    padding: 0 0 1rem 0; 
+                }
+                .informationDetails{
+                    @include flex(row, space-between); 
+                    flex-wrap: wrap; 
+                    span {
+                        font-weight: bolder;
+                    }
+                }
+            }
+            .checkoutInfo{
+                padding: 1rem 1rem 0.5rem; 
+                border-radius: 10px;
+                border: 1px solid $gray; 
+                // @include flex(row); 
+                margin: 2rem 0;
+                > img {
+                    height: 5rem; 
+                    width: 100%; 
+                    object-fit: cover;
+                    object-position: 20% 12%; 
+                }
+            }
+        }
+    }
+    .productDescriptionContainer{
+        @include flex(column, center, center, 2rem); 
+        .productDescReview{
+            padding: 2rem 4rem 1rem; 
+            border: 1px solid $grayBorder; 
+           .options{
+                margin: 0 0 2rem; 
+                @include flex(row, center, center, 2rem); 
+                > button{
+                    background-color: white; 
+                    cursor: pointer;
+                    &:hover{
+                        border-bottom: 2px solid $blue; 
+                    }
+                    padding: 0; font-size: 1rem;
+                }
+            }
+            > p{
+                width: 85%; 
+            }
+            
+        }
+    }
+    .relatedProductsContainer{
+        > h1{
+            @include inputLook(1.85rem, 2px, uppercase); 
+            @include inputPosition(1rem, 1rem 0, center); 
+        }
+        .products{ 
+            @include flex(row, space-between, center, 1.2rem); 
+            overflow-x: auto; flex-shrink: 0;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            .product{
+                width: 20rem; 
+            }
+        }
+    }
+}

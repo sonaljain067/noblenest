@@ -1,0 +1,218 @@
+.dashboardProductBox, .dashboardCustomerBox, .dashboardTransactionBox {
+    background-color: white;
+    padding: 2rem; 
+    overflow: auto;
+    @include square(100%); 
+    
+
+    >h2 {
+        @include heading; 
+        padding-bottom: 1rem; 
+    }
+
+    .table {
+        border: 0px; 
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.132);
+        font-size: 0.85rem;
+        th {
+            font-weight: 100;
+        }
+    }
+}
+
+.createProductBtn{
+    position: fixed; 
+    right: 2rem; 
+    top: 2rem; 
+    @include square(2rem);
+    @include flex(row, center, center, 0); 
+    background-color: rgb(44, 104, 255);
+    color: white; 
+    border-radius: 50%;
+
+    &:hover{
+        opacity: 0.9;
+    }
+}
+
+.dashboardCustomerBox {
+    .table tbody td img {
+        border-radius: 50%;
+    }
+}
+
+.dashboardTransactionBox{
+    .table {
+        tbody td a {
+            padding: 0.5rem 0.9rem; 
+        }
+        
+        td:first-child, th:first-child{
+            padding-left: 5rem; 
+        }
+
+    }   
+}
+
+.createNewProduct, .manageProduct{
+    @include flex(row, center, unset); 
+    > article {
+        height: 95vh; 
+        width: 100%;
+        max-width: 25rem; 
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.216);
+        border-radius: 10px;
+        margin: 1rem 0;
+        background-color: white;
+
+        > form {
+            @include flex(column, unset, center, 1.6rem); 
+            height: 100%; 
+
+            >  h2 {
+                @include heading; 
+                margin: 2rem 0 1.5rem; 
+            }
+
+            > img {
+                @include square(5rem);
+                object-fit: contain; // cover 
+                border-radius: 5px; 
+            }
+
+            > div {
+                width: 100%; 
+                position: relative; 
+
+                > span {
+                    position: absolute;
+                    top: 0.4rem; 
+                    font-size: 1.5rem;
+                    margin-left: 1.5rem; 
+                }
+
+                > input {
+                    @include inputStyle(75%, 1rem, unset, 1px solid rgba(13,13,13,0.196));
+                    margin-left: 4.5rem; 
+                    border-radius: 5px;
+                }
+            }
+
+            > button {
+                @include buttonColor(rgba(0, 0, 0, 0.01), 1x 1px 20px 6px rgba(0,0,0,0.1)); 
+                @include buttonPosition(1rem 0, 0.5rem 0); 
+                @include buttonSize(10px, 90%);
+            }
+        }
+    }
+}
+
+.manageProduct {
+    #file-input{
+        width: 4rem; margin-left: 10rem; 
+    }
+    > section {
+        overflow-y: auto;
+        width: 100%; 
+        height: 95vh;  
+        max-width: 28rem; // 31.25rem or 500px 
+        margin: 1rem 0;
+        @include flex(column, unset, unset, 1rem); 
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.216);
+        background-color: white;
+        padding: 5rem;
+        border-radius: 10px;
+        position: relative;
+
+        > h3 {
+            @include heading(4px); 
+            text-align: center;
+        }
+        > h2 {
+            text-align: center;
+            font-size: 1.8rem;
+        }
+        > img{ 
+            @include square(100%);  
+            object-fit: contain; // cover
+        }
+
+        > strong {
+            font-weight: 300;
+        }
+
+        > span{
+            position: absolute;
+            top: 2rem; 
+            right: 2rem; 
+        }
+    }
+}
+
+.transactionCard .products, .shippingInfoCard{
+    height: 80vh;
+    max-width: 2rem;
+    @include inputPosition(2rem, 4rem 0.5rem);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.216); 
+
+    h2 {
+        @include heading(3px);
+        margin-bottom: 1rem;
+    }
+}
+
+
+.transactionCard{
+    @include flex(row, center, center,0rem); 
+    .products {
+        overflow: auto;
+        .productCard{
+            @include flex(row, unset, center, 0.5rem);  
+            .productInfo{
+                @include flex(column, unset, unset, 0.5rem);  
+                margin: 1rem; 
+            }
+            > img {
+                @include square(4rem); 
+                object-fit: contain;
+                border-radius: 5px;
+            }
+        }
+    }
+}
+
+
+.shippingInfoCard{ 
+    @include flex(column, unset, unset, 0rem); 
+    // overflow: auto;
+     position: relative;
+
+    h5:first-child{
+        padding: 0rem 0 0.85rem; 
+    }
+    > h5 {
+        padding: 1rem 0 0.85rem; 
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+    p:last-child{
+        padding: 0.5rem; 
+        text-align: center;
+    }
+
+    p {
+        font-size: 0.85rem;
+    }
+    
+    .product-del-btn{
+        @include positionAbsolute(-0.75rem, -1.25rem); 
+        font-size: 1.2rem; 
+        @include buttonColor($blue, unset, white); 
+        padding: 0.65rem; border-radius: 50%; 
+    }
+    .product-process{
+       @include buttonColor($blue, none, white); 
+       @include buttonPosition(1rem, 2rem); 
+       @include buttonSize; 
+    }
+}

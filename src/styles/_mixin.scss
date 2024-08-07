@@ -1,0 +1,154 @@
+$blue: #0F83B2; 
+$lightblue: #B8E9F5; 
+$white: #F7F7F6; 
+$black: #101010; 
+$blue: rgb(0,104,136);
+$red: #F27373; 
+$lightRed: #F26C62; 
+$gray: #9E9E9E; 
+$green: #25BF0C; 
+$grayBorder: #D4D4D4;
+
+$white: white; 
+$gray: rgb(46,46,46);
+$blue: rgb(0,104,136);
+$purple: rgb(47, 0, 255);
+$green: rgb(0, 195, 0); 
+
+$darkGray: #375259; 
+$lighterBlue: #9CD7D2; 
+$yellow: #F7D161; 
+$lightYellow: #F2EB9E; 
+
+@mixin flex($direction: row, $justifyContent: center, $alignItems: center, $gap: 0.5rem) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+    gap: $gap; 
+} 
+
+@mixin grid($col: 1fr, $gap: 1rem, $row: unset) {
+    display: grid;
+    grid-template-columns: $col;
+    grid-template-rows: $row;
+    gap: $gap;
+} 
+
+@mixin heading($spacing: 3px, $weight: 300, $case: uppercase) {
+    letter-spacing: $spacing;
+    font-weight: $weight;
+    text-transform: $case;
+    text-align: center;
+} 
+
+@mixin square($size: 1rem) {
+    height: $size;
+    width: $size; 
+}
+
+@mixin inputColor($backgroundColor: white, $color: unset, $opacity: unset){
+    background-color: $backgroundColor;
+    color: $color; 
+    &:hover {
+        opacity: $opacity;
+    }
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+}
+
+@mixin inputPosition($padding: 1rem 2rem, $margin: unset, $align: unset){
+    margin: $margin; 
+    padding: $padding; 
+    text-align: $align;
+}
+
+@mixin inputStyle($width: 100%, $padding: 1rem, $bgColor: inherit, $border: none, $border-radius: 10px){
+    width: $width; 
+    padding: $padding; 
+    border: $border;
+    background-color: $bgColor;
+    outline: none; 
+    border-radius: $border-radius;
+}
+
+@mixin inputSize($width: unset, $height: unset) {
+    width: $width; 
+    height: $height; 
+}
+
+@mixin inputLook($fontSize: unset, $letterSpacing: unset, $textTransform: unset, $fontWeight: unset) {
+    letter-spacing: $letterSpacing;
+    text-transform: $textTransform;
+    font-size: $fontSize; 
+    font-weight: $fontWeight;
+}
+
+@mixin boxStyle($borderRadius: 10px, $boxShadow: 1px 1px 10px 2px rgba(0,0,0,0.1), $border: unset) {
+    border-radius: $borderRadius; 
+    box-shadow: $boxShadow;
+    border: $border; 
+}
+
+@mixin positionAbsolute($top: unset, $right: unset, $bottom: unset, $left: unset, $position: absolute){
+    position: $position; 
+    top: $top;
+    right: $right;
+    left: $left; 
+    bottom: $bottom; 
+}
+
+@mixin inputButton($border: unset, $borderRadius: unset) {
+    border: $border; 
+    border-radius: $borderRadius;
+}
+
+@mixin buttonColor($backgroundColor: white, $boxShadow: 1px 1px 10px 2px rgba(0,0,0,0.1), $color: unset, $opacity: unset){
+
+    background-color: $backgroundColor;
+    color: $color; 
+    box-shadow: $boxShadow;
+    &:hover {
+        opacity: $opacity;
+    }
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
+    border: none; 
+    outline: none; 
+    cursor: pointer; 
+    text-decoration: none;
+}
+
+@mixin buttonPosition($padding: 1rem 2rem, $margin: unset, $letterSpacing: unset, $textTransform: unset){
+    margin: $margin; 
+    padding: $padding; 
+    letter-spacing: $letterSpacing;
+    text-transform: $textTransform;
+}
+
+@mixin buttonSize($borderRadius: 10px, $width: unset, $fontSize: unset, $height: unset, $border: unset) {
+    width: $width; 
+    height: $height; 
+    font-size: $fontSize; 
+    border-radius: $borderRadius; 
+    border: $border; 
+}
+@mixin inputImg($objectFit: unset, $height: unset, $width: unset, $repeat: no-repeat, $opacity: unset) {
+    object-fit: $objectFit;
+    height: $height; 
+    width: $width; 
+    opacity: $opacity;
+    background-repeat: $repeat;
+}
+
+@mixin positionCenter(){
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

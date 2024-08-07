@@ -1,0 +1,272 @@
+// /* Large screens ----------- */
+// @media only screen 
+// and (min-width : 1824px) {
+//   /* Styles */
+// }
+
+// /* Desktops and laptops ----------- */
+// @media only screen 
+// and (min-width : 1224px) {
+//   /* Styles */
+// }
+
+// /* iPads (portrait) ----------- */
+// @media only screen 
+// and (max-device-width : 1024px) 
+// and (min-device-width : 768px) 
+// and (orientation : portrait) {
+  
+// }
+
+// /* iPads (landscape) ----------- */
+// @media only screen 
+// and (max-device-width : 1024px) 
+// and (min-device-width : 768px) 
+// and (orientation : landscape) {
+//   /* Styles */
+// }
+
+/* Large screens ----------- */ 
+@media only screen 
+and (max-width: 2560px)
+and (min-width : 1441px) {
+    // ------------- Dashboard ------------------ 
+    .userDashboardDiv {
+        // Overlay Image
+        .dashboardOverlayImageSection{
+            > img {
+                @include inputImg(cover, 88.5vh, 100%, no-repeat, 15); 
+            }
+        }
+    }
+    // ------------- Dashboard ------------------ 
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (max-device-width : 1024px)
+and (min-device-width : 768px) {
+    // ------------- Navbar ------------------
+    .navUserHeader {
+        // Menu 
+        section.navDetailsHeader {
+            padding: 1rem; 
+            justify-content: center;
+            .navSearchAndCart {
+                margin: 1rem 0; 
+                p  {
+                    >input {
+                        width: 20rem;                      
+                    }
+                }
+            }
+        }
+    }
+    // ------------- Navbar ------------------ 
+
+    // ------------- Dashboard ------------------ 
+    .userDashboardDiv   {
+        .dashboardTopFeaturedBestSellerSection{
+            .featuredProducts, .bestSellerProducts, .newArrivalProducts {
+                padding: 0rem; 
+            }
+        }
+        .dashboardSiteFeaturesSection .feature{
+            margin: 0.5rem; 
+            width: 18rem; 
+        }
+
+    }
+}
+
+// /* iPads (landscape) ----------- */
+@media only screen 
+and (max-device-width : 768px)
+and (min-device-width : 425px) {
+    // ------------- Navbar ------------------
+    nav.navUserHeader {
+        // Login / Signup 
+        .navInfo {
+            @include flex(column, center); 
+        }
+        // Menu 
+        section.navDetailsHeader {
+            .navNavigation {
+                gap: 0.75rem; 
+                margin: 1.5rem 0; 
+            }
+            .navSearchAndCart {
+                margin: -1rem; 
+            }
+        }
+    }
+    // ------------- Dashboard ------------------ 
+    .userDashboardDiv {
+        // Image Overlay 
+        section.dashboardOverlayImageSection {
+            article {
+                > h1{
+                    font-size: 2.5rem; 
+                }
+                > p{
+                    font-size: 1rem; 
+                }
+                > a {
+                    padding: 1rem; 
+                }
+            }
+        }
+        // same style 
+        .dashboardProductCategoriesSection, .dashboardPopularProductsSection, .dashboardTopFeaturedBestSellerSection, .dashboardCustomerTestimonialSection{
+            > h1 {
+                font-size: 2rem; 
+                padding: 1rem 0 0; 
+                
+            }
+            > p{
+                @include inputPosition(0.45rem 0, 0); 
+            }
+        }
+        // product 
+        .dashboardTopFeaturedBestSellerSection {
+            .options {
+                margin: 0; 
+            }
+            .featuredProducts, .bestsellerProducts, .newArrivalProducts{
+                padding: 1rem; 
+            }
+        }
+        // testiomonial 
+        .dashboardCustomerTestimonialSection .testimonials{
+            margin: 1.5rem; 
+        }
+        // features 
+        .dashboardSiteFeaturesSection{
+            justify-content: center;
+            .feature{
+                @include inputSize(15rem, 12rem); 
+                margin: 0.5rem; 
+                >h1{
+                    font-size: 1.25rem; 
+                }
+            }
+        }    
+    }
+// ------------- Dashboard ------------------ 
+
+// ------------- Footer ------------------ 
+    div.userFooter{
+        gap: 0; 
+        padding: 5rem 3rem 14rem;  
+        .aboutUs,  .accountInfo, .customerService{
+            padding: 1rem 0; 
+            a > img{ 
+                width: 12rem; 
+            }
+            > h2{
+                margin: 0rem 0 0.5rem; 
+            }
+        }
+    }
+// ------------- Footer ------------------ 
+}
+
+@media only screen 
+and (max-device-width : 480px)
+and (min-device-width: 320px){
+    // ------------- Navbar ------------------
+    nav.navUserHeader {
+        .navInfo {
+            @include flex(column, center); 
+            padding: 1rem 2rem; 
+        }
+        section.navDetailsHeader {
+            justify-content: center;
+            .navNavigation {
+                gap: 0.75rem; 
+                margin: 1.5rem 0; 
+                padding-left: 0; 
+            }
+            .navSearchAndCart {
+                margin: -1rem;  gap: 1.5rem; 
+                justify-content: center;
+                p  {
+                    margin-left: 0;
+                    >input {
+                        width: 12rem; 
+                    }
+                }
+            }
+        }
+    }
+    // ------------- Dashboard ------------------ 
+    .userDashboardDiv {
+        // Image Overlay 
+        section.dashboardOverlayImageSection {
+            article {
+                > h1{
+                    font-size: 2.15rem; 
+                    margin: 0rem; 
+                }
+                > p{
+                    font-size: 1rem; 
+                }
+                > a {
+                    padding: 1rem; 
+                }
+            }
+        }
+        // same style 
+        .dashboardProductCategoriesSection, .dashboardPopularProductsSection, .dashboardTopFeaturedBestSellerSection, .dashboardCustomerTestimonialSection{
+            > h1 {
+                font-size: 2rem; 
+                padding: 1rem 0 0; 
+                
+            }
+            > p{
+                @include inputPosition(0.45rem 0, 0); 
+            }
+        }
+        // bestseller 
+        .dashboardTopFeaturedBestSellerSection {
+            .options {
+                margin: 0; 
+            }
+            .featuredProducts, .bestsellerProducts, .newArrivalProducts{
+                padding: 1rem; 
+            }
+        }
+        // testimonial 
+        .dashboardCustomerTestimonialSection .testimonials{
+            margin: 1.5rem; 
+        }
+        
+        // feature 
+        .dashboardSiteFeaturesSection{
+            justify-content: center;
+            .feature{
+                @include inputSize(15rem, 12rem); 
+                margin: 0.5rem; 
+                >h1{
+                    font-size: 1.25rem; 
+                }
+            }
+        }    
+    }
+    // ------------- Dashboard ------------------ 
+
+    // -------------  ------------------ 
+    div.userFooter{
+        gap: 0; 
+        padding: 5rem 3rem 14rem;  
+        .aboutUs,  .accountInfo, .customerService{
+            padding: 1rem 0; 
+            a > img{ 
+                width: 12rem; 
+            }
+            > h2{
+                margin: 0rem 0 0.5rem; 
+            }
+        }
+    }
+}
