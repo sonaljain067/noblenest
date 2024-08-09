@@ -39,9 +39,13 @@ const Product = () => {
 
     }
     if(isError) {
-        const err = (error as ErrorAPIResponse).data.message
-        toast.error(err);  
-      }
+        const err = (error as ErrorAPIResponse)?.data.message
+        if(err) toast.error(err);  
+        else {
+            console.log(error)
+            toast.error("Internal Server Error!!")
+        }  
+    }
     const addToCartHandler = (cartItem: OrderItem) => {
         if(cartItem.product.stock < 1) return toast.error("Out of Stock!"); 
         dispatch(addToCart({order: cartItem, flag: false, dir: true})); 

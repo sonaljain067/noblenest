@@ -8,34 +8,28 @@ import { useCategoriesQuery } from "../../redux/api/categoryAPI";
 import { useLatestProductsQuery } from "../../redux/api/productAPI";
 import { addToCart } from "../../redux/reducer/cartReducer";
 import { updateCategory } from "../../redux/reducer/productReducer";
-// import { ErrorAPIResponse } from "../../types/api.types";
-import { OrderItem } from "../../types/base.types";
 import { ErrorAPIResponse } from "../../types/api.types";
-import { SerializedError } from "@reduxjs/toolkit";
-import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import { OrderItem } from "../../types/base.types";
 
 const Home = () => {
-    
     const { data, isLoading = true, isError, error } = useLatestProductsQuery(""); 
     const { data: categoriesResponse, isError: isErrorCategories, error: categoryError, isLoading: categoryLoading } = useCategoriesQuery("");
     const dispatch = useDispatch(); 
-    
+
     if(isErrorCategories) {
-        if((categoryError as SerializedError)?.message || (categoryError as FetchBaseQueryError)?.data) {
+        const err = (categoryError as ErrorAPIResponse)?.data.message
+        if(err) toast.error(err);  
+        else {
             console.log(categoryError)
-            
-        } else if((categoryError as ErrorAPIResponse)?.data){
-            const err = (categoryError as ErrorAPIResponse)?.data.message
-            toast.error(err);  
+            toast.error("Internal Server Error!!")
         }
     }
     if(isError) {
-        if((error as SerializedError)?.message || (error as FetchBaseQueryError)?.data) {
+        const err = (error as ErrorAPIResponse)?.data.message
+        if(err) toast.error(err);  
+        else {
             console.log(error)
-            
-        } else if((error as ErrorAPIResponse)?.data){
-            const err = (error as ErrorAPIResponse)?.data.message
-            toast.error(err);  
+            toast.error("Internal Server Error!!")
         }
     }
     
@@ -78,7 +72,7 @@ const Home = () => {
             <div className="popularProducts">
             {
                 isLoading ? <SkeletonLoader length={20}/> : (
-                    data?.data && data?.data.map(i => (
+                    data?.data && data?.data.slice(0,12).map(i => (
                         <ProductItem 
                             _id={i._id} 
                             name={i.name} 
@@ -112,6 +106,14 @@ const Home = () => {
                     <div className="customerInfo">
                         <img src="https://randomuser.me/api/portraits/men/7.jpg" alt="" />
                         <h4 className="customerName">John Smith</h4>
+                    </div>
+                </div>
+                <div className="testimonial">
+                    <div className="rating"><Rating rating={4}/></div>
+                    <p className="testimony">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit qui suscipit illo, est officiis totam perspiciatis possimus ipsum, ab asperiores beatae quis dolores exercitationem eos similique id soluta numquam tenetur.</p>
+                    <div className="customerInfo">
+                        <img src="https://randomuser.me/api/portraits/women/10.jpg" alt="" />
+                        <h4 className="customerName">Jessica</h4>
                     </div>
                 </div>
             </article>

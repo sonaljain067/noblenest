@@ -3,7 +3,7 @@ import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import moment from "moment";
 import { toast } from "react-hot-toast";
 import { NavigateFunction } from "react-router-dom";
-import { APIResponse } from "../types/api.types";
+import { APIResponse, ErrorAPIResponse } from "../types/api.types";
 
 type ResponseType = {
         data: APIResponse;
@@ -18,8 +18,12 @@ export const responseToast = (res: ResponseType, navigate: NavigateFunction|null
         toast.success(res.data?.message as string); 
         if(navigate) navigate(url); 
     } else {
-        const error = (res.error as string)
-        toast.error(error)
+        const err = (res.error as ErrorAPIResponse)?.data.message
+        if(err) toast.error(err);  
+        else {
+            console.log(res.error)
+            toast.error("Internal Server Error!!")
+        }
     }
 }
 

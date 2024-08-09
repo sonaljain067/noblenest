@@ -52,8 +52,12 @@ const TransactionCard = () => {
   const { data, isLoading, isError, error } = useOrderDetailsQuery({userId: user?._id!, orderId: params.id!})
 
   if(isError) {
-    const err = (error as ErrorAPIResponse)?.data.message;
-    toast.error(err); 
+    const err = (error as ErrorAPIResponse)?.data.message
+    if(err) toast.error(err);  
+    else {
+        console.log(error)
+        toast.error("Internal Server Error!!")
+    }
     return <Navigate to={"/404"} />
   }
 
@@ -85,9 +89,10 @@ const TransactionCard = () => {
   return (
     <div className="adminContainer">
       <AdminSideBar />
-      {isLoading ? <SkeletonLoader length={100} /> : <main className="transactionCard">
+      {isLoading ? <SkeletonLoader length={100} /> : 
+      <main className="transactionCard">
         <section className="products">
-          <h2>Order Items</h2>
+          <h1>Order Items</h1>
           {orderItems.map((order: any) => (
             <div className="productCard">
             <img src={ order?.product.coverImage || ""} alt={ order?.product.name } /> 
@@ -101,27 +106,26 @@ const TransactionCard = () => {
         <article className="shippingInfoCard">
           <button className="product-del-btn" onClick={deleteHandler}><FaTrash/></button>
           <h2>Order Info</h2>
-          <h5>User Info</h5>
+          <h3>User Info</h3>
           <p>{firstName}</p>
           <p>{`${address}, ${city}, ${state}, ${country}, ${pincode}`}</p>
-
-          <h5>Amount Info</h5>
+          
+          <h3>Amount Info</h3>
           <p>Subtotal: {subTotal}</p>
           <p>Shipping Charges: {shippingCharges}</p>
           <p>Tax: {tax}</p>
           <p>Discount: {discount}</p>
           <p>Total: {total}</p>
 
-          <h5>Status Info</h5>
+          <h3>Status Info</h3>
           <p>Status: 
             <span className={status === "Delivered" ? "purple" : status === "Shipped" ? "green" : "red"}>
-              {status}
+               {status}
             </span>
           </p>
           <button onClick={updateHandler} className="product-process">Process Status</button>
         </article>
       </main> }
-        
     </div>
   )
 }

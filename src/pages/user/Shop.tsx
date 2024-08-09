@@ -30,17 +30,29 @@ const Shop = () => {
 
   const popularData = products?.data.products.slice(0,3)
   if(isErrorCategories) {
-    const err = (categoryError as ErrorAPIResponse).data.message
-    toast.error(err);  
+    const err = (categoryError as ErrorAPIResponse)?.data.message
+    if(err) toast.error(err);  
+    else {
+        console.log(categoryError)
+        toast.error("Internal Server Error!!")
+    }
   }
   if(isErrorSubCategories) {
-    const err = (subcategoryError as ErrorAPIResponse).data.message
-    toast.error(err);  
+    const err = (subcategoryError as ErrorAPIResponse)?.data.message
+    if(err) toast.error(err);  
+    else {
+        console.log(subcategoryError)
+        toast.error("Internal Server Error!!")
+    }
   }
 
   if(isErrorSearchProducts){
-    const err = (searchProductsError as ErrorAPIResponse).data.message
-    toast.error(err);  
+    const err = (searchProductsError as ErrorAPIResponse)?.data.message
+    if(err) toast.error(err);  
+    else {
+        console.log(searchProductsError)
+        toast.error("Internal Server Error!!")
+    } 
   }
 
   const addToCartHandler = (cartItem: OrderItem) => {

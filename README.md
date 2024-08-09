@@ -1,30 +1,50 @@
-# React + TypeScript + Vite
+<p align="center">
+  <img width="100px" src="https://res.cloudinary.com/dyu8bj7ko/image/upload/v1717937457/Noble%20Nest/logo-dark.png">
+  <h1 align="center">NobleNest</h1>
+  <p align="center">Application to connect local artisans with consumers</p>
+</p>
+Here is quick walkthrough of the project: 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Watch the video](./src/assets/home.png)](https://drive.google.com/file/d/1T60rWIjMcJDygo8x34WD46959PpA-4fT/view?usp=sharing)
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔍 Overview 
+Here's a short overview of the project. It's a full stack web application that helps to connect local artisans directly with their consumers with no-middle intervention. 
 
-## Expanding the ESLint configuration
+## ✨ Features 
+This system has lots of features such as:
+- Developed a fully-featured eCommerce platform with functionalities like incorporating comprehensive product management, user authentication, and order processing.
+- Designed and implemented an advanced admin dashboard with real-time analytics, interactive charts, and detailed reports on sales, and inventory.
+- Built a dynamic product management system supporting CRUD operations and advanced search, sort and filtering capabilities.
+- Created a robust customer management system with features for tracking user profiles and  purchase history, and support interactions.
+- Developed a flexible coupon management system to handle various promotional strategies and track coupon usage.
+- Implemented an efficient order and inventory management module with real-time updates and stock level monitoring.
+- Optimized website performance for improved load times and user experience across devices, ensuring mobile responsiveness and cross-browser compatibility.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## ⚡️ Technologies
+The application uses different technology including:
+- ReactJS with Typescript for frontend 
+- NodeJS/Express with Typescript backend 
+- SCSS for styling
+- Redux Toolkit & RTK Query for state management
+- MongoDB for Database management
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## 🍕 Getting Started 
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Here we will setup our development environment. But first, we will need to install the following tools.
+
+**Steps**
+1. Clone the repository to local machine using command git clone `repo link` 
+For frontend - `git clone https://github.com/sonaljain067/noblenest`
+For backend - `https://github.com/sonaljain067/noblenest_backend`
+
+2. Navigate to project directory through command line
+
+3. Install the required project dependencies by running `npm install`
+
+4. Start the development server by running `npm run dev`
+
+
+This will start the backend application at http://localhost:8000 and frontend application on your local machine at http://localhost:5174/. 
+You can then open this URL in your web browser to view the application.

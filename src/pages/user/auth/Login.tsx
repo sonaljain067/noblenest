@@ -1,11 +1,12 @@
-import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { auth } from "../../../firebase";
 import { useLoginMutation } from "../../../redux/api/userAPI";
-import { APIResponse, ErrorAPIResponse } from "../../../types/api.types";
+import { userExist, userNotExist } from "../../../redux/reducer/userReducer";
+import { ErrorAPIResponse, UserAPIResponse } from "../../../types/api.types";
+import { User } from "../../../types/base.types";
 
 const Login = () => {
     const [gender, setGender] = useState("");
@@ -30,17 +31,26 @@ const Login = () => {
                 dob: date,
                 _id: ""
             });
-
             if ("data" in res) {
-                const message = (res.data as APIResponse).message;
+                const message = (res.data as UserAPIResponse).message;
                 toast.success(message);
+                userExist(res.data?.data as User)
             } else {
-                const error = res.error as FetchBaseQueryError;
-                const message = (error.data as ErrorAPIResponse).data.message;
-                toast.error(message);
+                const err = (res.error as ErrorAPIResponse)?.data.message
+                if(err) toast.error(err);  
+                else {
+                    console.log(res.error)
+                    toast.error("Internal Server Error!!")
+                }
+                userNotExist(); 
             }
         } catch (error) {
-            toast.error(error as string); 
+            const err = (error as ErrorAPIResponse)?.data.message
+            if(err) toast.error(err);  
+            else {
+                console.log(error)
+                toast.error("Internal Server Error!!")
+            }
         }
     };
 
@@ -71,7 +81,6 @@ const Login = () => {
                     />
                 </div>
                 <div>
-                    {/* <p>Already Sign In! </p> */}
                     <button onClick={loginHandler}>
                         <FcGoogle /> Sign In with Google
                     </button>

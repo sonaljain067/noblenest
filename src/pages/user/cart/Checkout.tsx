@@ -24,8 +24,12 @@ const Checkout = () => {
         
     }
     if(isError) {
-        const err = (error as ErrorAPIResponse)?.data.message;
-        toast.error(err); 
+        const err = (error as ErrorAPIResponse)?.data.message
+        if(err) toast.error(err);  
+        else {
+            console.log(error)
+            toast.error("Internal Server Error!!")
+        }
     }
     const [Razorpay] = useRazorpay(); 
     const [createAddress] = useCreateAddressMutation();
@@ -74,7 +78,7 @@ const Checkout = () => {
                 }
             })
             if(!data.data.id) {
-                toast.error("rzp order id missing!")
+                toast.error("RZP Order ID missing!")
             }
             const options: RazorpayOptions = {
                 key: import.meta.env.VITE_RAZORPAY_KEY,
@@ -98,6 +102,9 @@ const Checkout = () => {
                     toast.success("Payment success!!")
                     navigate("/");
                 },
+                theme: {
+                    color: '#006888'
+                },
                 prefill: {
                     contact: user.phone, 
                     email: user.email
@@ -119,7 +126,12 @@ const Checkout = () => {
             paymentObject.open(); 
 
         } catch(error){
-            toast.error(error as string)
+            const err = (error as ErrorAPIResponse)?.data.message
+            if(err) toast.error(err);  
+            else {
+                console.log(error)
+                toast.error("Internal Server Error!!")
+            }
         }
     }
     const addressHandler = (address: Address) => {

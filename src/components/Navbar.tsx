@@ -9,6 +9,7 @@ import { Link, useLocation } from "react-router-dom";
 import { auth } from "../firebase";
 import { RootState } from "../redux/store";
 import { LiProps } from "../types/dash.types";
+import { ErrorAPIResponse } from "../types/api.types";
 
 const Li = ({ url, text, location }: LiProps) => (
     <li>
@@ -42,7 +43,12 @@ const Navbar = () => {
             toast.success("Signed Out Successfully!");
             setIsOpen(false);
         } catch (error) {
-            toast.error("Sign Out fail!");
+            const err = (error as ErrorAPIResponse)?.data.message
+            if(err) toast.error(err);  
+            else {
+                console.log(error)
+                toast.error("Internal Server Error!!")
+            }
         }
     };
 

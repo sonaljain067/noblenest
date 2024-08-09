@@ -86,8 +86,12 @@ const Orders = () => {
     const { user } = useSelector((state: RootState) => (state.userReducer))
     const { data: transactionsData, isLoading, isError, error } = useAllOrdersQuery(user?._id!);
     if(isError) {
-      const err = (error as ErrorAPIResponse)?.data.message;
-      toast.error(err); 
+      const err = (error as ErrorAPIResponse)?.data.message
+      if(err) toast.error(err);  
+      else {
+          console.log(error)
+          toast.error("Internal Server Error!!")
+      }
     }
     
     const [ rows, setRows ] = useState<TransactionDataType[]> ([]); 

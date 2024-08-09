@@ -66,7 +66,7 @@ function App() {
 
                     <Route path="/login"
                         element={
-                            <ProtectedRoute isAuthenticated = {user._id !== '' ? false : true }>
+                            <ProtectedRoute isAuthenticated = { user && user._id !== '' ? false : true }>
                                 <Login />
                             </ProtectedRoute>
                         }

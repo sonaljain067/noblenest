@@ -23,8 +23,12 @@ const Product = () => {
   const { data, isLoading, isError, error } = useProductDetailsQuery(params.id!);
 
   if(isError) {
-    const err = (error as ErrorAPIResponse)?.data.message;
-    toast.error(err); 
+    const err = (error as ErrorAPIResponse)?.data.message
+    if(err) toast.error(err);  
+    else {
+        console.log(error)
+        toast.error("Internal Server Error!!")
+    }
     return <Navigate to={"/404"} />
   }
   const { name, price, stock, description, coverImage } = data?.data || {
@@ -66,7 +70,12 @@ const Product = () => {
       const res = await updateProduct({userId: user?._id!, formData, productId: data?.data._id!}); 
       responseToast(res, navigate, "/admin/product");
     } catch(error) {
-      toast.error(error as string); 
+      const err = (error as ErrorAPIResponse)?.data.message
+      if(err) toast.error(err);  
+      else {
+          console.log(error)
+          toast.error("Internal Server Error!!")
+      }
     } 
   }
 

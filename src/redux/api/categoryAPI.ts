@@ -14,8 +14,11 @@ export const CategoryAPI = createApi({
         }),
         subCategories: builder.query<SubCategoryAPIResponse, string>({
             query: () => "/sub"
-        })
+        }),
+        catSubCategories: builder.query<SubCategoryAPIResponse, string>({
+            query: (id) => `/cat/sub/${id}`
+        }),
     })
 }) 
 
-export const { useCategoriesQuery, useSubCategoriesQuery } = CategoryAPI;
+export const { useCategoriesQuery, useSubCategoriesQuery, useCatSubCategoriesQuery } = CategoryAPI;
