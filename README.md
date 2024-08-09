@@ -3,7 +3,8 @@
   <h1 align="center">NobleNest</h1>
   <p align="center">Application to connect local artisans with consumers</p>
 </p>
-Here is quick walkthrough of the project: 
+Here is quick walkthrough of the project: <br/>
+
 [![Watch the video](./src/assets/home.png)](https://drive.google.com/file/d/14la3oHn5nvO5ew4U9B42LHorzMGwqMXz/view?usp=sharing)
 
 
