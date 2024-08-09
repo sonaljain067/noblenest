@@ -4,8 +4,7 @@
   <p align="center">Application to connect local artisans with consumers</p>
 </p>
 Here is quick walkthrough of the project: 
-
-[![Watch the video](./src/assets/home.png)](https://drive.google.com/file/d/1T60rWIjMcJDygo8x34WD46959PpA-4fT/view?usp=sharing)
+[![Watch the video](./src/assets/home.png)](https://drive.google.com/file/d/14la3oHn5nvO5ew4U9B42LHorzMGwqMXz/view?usp=sharing)
 
 
 ## 🔍 Overview 
